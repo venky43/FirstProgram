@@ -1,0 +1,19 @@
+package college;
+
+public class TestSaveTeacher {
+	public static void main(String[] args) {
+		 Teacher t =new Teacher();
+		 t.setId(1);
+		 t.setName("venky");
+		 t.setEmail("@venky");
+		 t.setContact("9");
+		 t.setSubject("science");
+		 t.setClassTeacher("99.99");
+		t.setSal(20000);
+		 t.setAddress("12655659+79");	 
+		 t.setPassword("good");
+		 
+		 TeacherRepositryimp r= new TeacherRepositryimp();
+		 System.out.println(r.saveTeacher(t));
+}
+}

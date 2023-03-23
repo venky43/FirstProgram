@@ -1,0 +1,26 @@
+package collegeadmin;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+ 
+@WebServlet("/aab")
+public class mulReqDisPat extends HttpServlet {
+
+	 protected void doPost (HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int a = Integer.parseInt("num1");
+		int b = Integer.parseInt("num2");
+		int r=a+b;
+		r=r*r;
+		
+		PrintWriter p = res.getWriter();
+		p.print(r);
+		
+		
+	}
+}

@@ -1,0 +1,61 @@
+package college;
+
+import java.util.List;
+
+public class StudentServiceIMP implements StudentService{
+
+	@Override
+	public Student studentLogin(String email, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String saveStudent(Student student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Student getStudentById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Student deleteStudent(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Student updateStudent(Student student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> getStudentByStd(String std) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> getStudentByStdAndsec(String std, String sec) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> getStudentBetweenPercentage(String lower, String high) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> getAllStudent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

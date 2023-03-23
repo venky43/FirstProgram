@@ -1,0 +1,21 @@
+package college;
+
+public class TestSaveStudent {
+
+	public static void main(String[] args) {
+		 Student student = new Student();
+		 student.setName("legain");
+		 student.setEmail("@legain.com");
+		 student.setAddress("banglore");
+		 student.setGender("male");
+		 student.setOverAllPercentage("99.99");
+		 student.setParentContact("12655659+79");
+		 student.setStd("9");
+		 student.setSec("A");
+		 student.setRemarks("good");
+		 student.setPassword("11223");
+		 StudentRepositry res= new StudentRepositryImp();
+		 System.out.println(res.saveStudent(student));
+	}
+
+}

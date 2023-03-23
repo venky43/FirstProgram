@@ -1,0 +1,31 @@
+package college;
+
+public class TestSaveStudent {
+
+	public static void main(String[] args) {
+		 Student studen = new Student();
+		 studen.setId(3);
+		 studen.setName("venky");
+		 studen.setEmail("hada");
+		 studen.setStd("9");
+		 studen.setSec("A");
+		 studen.setOverAllPercentage("99.99");
+		 studen.setGender("male");
+		 studen.setParentContact("12655659+79");	 
+		 studen.setRemarks("good");
+		 studen.setAddress("banglore");
+		 studen.setPassword("11223");
+		 StudentRepositryImp r= new StudentRepositryImp();
+		 System.out.println(r.saveStudent(studen));
+		
+//		StudentRepositry res= new StudentRepositryImp();
+//	 Student student = res.studentLogin("@legain","11223");
+//	 if(student != null) {
+//		 System.out.println(student.getName());
+//	 }else {
+//		 System.out.println("Invalid user or password");
+//	 }
+		
+	}
+
+}

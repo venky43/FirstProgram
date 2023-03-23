@@ -1,0 +1,299 @@
+package college;
+//DAO package which is used for data base introduction
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import Dbms.service.AppConstants;
+
+public class StudentRepositryImp implements StudentRepositry {
+
+	public Connection getConnection() {
+		return   ConnectionUtil.getConnection();
+	}
+	 
+
+	@Override
+	public Student studentLogin(String email, String password) {
+		Connection con= getConnection();
+		String query = "SELECT * FROM student WHERE email=? AND password=?";
+		try {
+			PreparedStatement ps=	con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				Student student = new Student();
+				student.setId(rs.getInt(1));
+				student.setName(rs.getString(2));
+				student.setEmail(rs.getString(3));
+				student.setStd(rs.getString(4));
+				student.setSec(rs.getString(5));
+				student.setOverAllPercentage(rs.getString(6));
+				student.setGender(rs.getString(7));
+				student.setParentContact(rs.getString(8));
+				student.setRemarks(rs.getString(9));
+				student.setAddress(rs.getString(10));
+				student.setPassword(rs.getString(11));
+			}
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public String saveStudent(Student student) {
+		 Connection con = getConnection();
+		 String query = "INSERT INTO  student VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		 try {
+			PreparedStatement ps = con.prepareStatement(query);
+			 
+			ps.setInt(1, student.getId());
+			ps.setString(2, student.getName());
+			ps.setString(3, student.getEmail());
+			ps.setString(4, student.getStd());
+			ps.setString(5, student.getSec());
+			ps.setString(6, student.getOverAllPercentage());
+			ps.setString(7, student.getGender());
+			ps.setString(8, student.getParentContact());
+			ps.setString(9, student.getRemarks());
+			ps.setString(10, student.getAddress());
+			ps.setString(11, student.getPassword());
+			 
+			int res = ps.executeUpdate();
+			return res+"no of rows added";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		return null;
+	}
+
+	@Override
+	public Student getStudentById(int id) {
+		 Connection con = getConnection();
+		 String sql = "select * from student where id=?";
+		 try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				Student student = new Student();
+				student.setId(rs.getInt(1));
+				student.setName(rs.getString(2));
+				student.setEmail(rs.getString(3));
+				student.setStd(rs.getString(4));
+				student.setSec(rs.getString(5));
+				student.setOverAllPercentage(rs.getString(6));
+				student.setGender(rs.getString(7));
+				student.setParentContact(rs.getString(8));
+				student.setRemarks(rs.getString(9));
+				student.setAddress(rs.getString(10));
+				student.setPassword(rs.getString(11));
+				return student;
+			}
+		} catch (SQLException e) {
+			 
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
+	@Override
+	public String deleteStudentById(int id) {
+		 Connection con = getConnection();
+		 String sql = " delete from student where id=? ";
+		  
+		 
+		 try {
+			 PreparedStatement ps = con.prepareStatement(sql);
+			 ps.setInt(1, id);
+				int rs = ps.executeUpdate();
+				return "Delete success of"+rs;
+				 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "not delete any one";
+	}
+
+	 
+	@Override
+	public List<Student> getStudentByStd(String std) {
+		 Connection con = getConnection();
+		 List<Student> l = new ArrayList<>();
+		 String sql = "select * from student where std=?";
+		 try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,std);
+			ResultSet r = ps.executeQuery();
+			
+			if(r.next()) {
+
+				Student s = new Student();
+				s.setId(r.getInt(1));
+				s.setName(r.getString(2));
+				s.setEmail(r.getString(3));
+				s.setStd(r.getString(4));
+				s.setSec(r.getString(5));
+				s.setOverAllPercentage(r.getString(6));
+				s.setGender(r.getString(7));
+				s.setParentContact(r.getString(8));		
+				s.setRemarks(r.getString(9));
+				s.setAddress(r.getString(10));
+				s.setPassword(r.getString(11));
+				l.add(s);
+			}	
+			return l;
+		} catch (SQLException e) {
+			 
+			e.printStackTrace();
+		}
+		 
+		return null;
+	}
+
+	 
+	@Override
+	public List<Student> getStudentByStdAndsec(String std, String sec)   {
+		Connection con = getConnection();
+		List<Student> l = new ArrayList();
+		String sql = "select * from student where std=? and sec=?";
+		try {
+			PreparedStatement p = con.prepareStatement(sql);
+			p.setString(1, std);
+			p.setString(2, sec);
+			ResultSet r = p.executeQuery();
+			while(r.next()){
+				Student s = new Student();
+				s.setId(r.getInt(1));
+				s.setName(r.getString(2));
+				s.setEmail(r.getString(3));
+				s.setStd(r.getString(4));
+				s.setSec(r.getString(5));
+				s.setOverAllPercentage(r.getString(6));
+				s.setGender(r.getString(7));
+				s.setParentContact(r.getString(8));
+				s.setRemarks(r.getString(9));
+				s.setAddress(r.getString(10));
+				s.setPassword(r.getString(11));
+				l.add(s);
+			}
+			return l;
+		} catch (SQLException e){
+			 
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Student> getStudentBetweenPercentage(String lower, String high)  {
+		 Connection con = getConnection();
+		 List<Student> l = new ArrayList<>();
+		 String sql = "select * from student where OverAllPercentage between ?and?";
+		 try {
+			PreparedStatement p = con.prepareStatement(sql);
+			p.setString(1, lower);
+			p.setString(2, high);
+			ResultSet r = p.executeQuery();
+			while(r.next()) {
+				Student s=new Student();
+				s.setId(r.getInt(1));
+				s.setName(r.getString(2));
+				s.setEmail(r.getString(3));
+				s.setStd(r.getString(4));
+				s.setSec(r.getString(5));
+				s.setOverAllPercentage(r.getString(6));
+				s.setGender(r.getString(7));
+				s.setParentContact(r.getString(8));
+				s.setRemarks(r.getString(9));
+				s.setAddress(r.getString(10));
+				s.setPassword(r.getString(11));
+				l.add(s);
+			}
+			return l;
+		 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Student> getAllStudent() {
+		Connection con = getConnection();
+		List<Student> l = new ArrayList<>();
+		String sql = "select * from student";
+		try {
+			PreparedStatement p = con.prepareStatement(sql);
+			
+			ResultSet r = p.executeQuery();
+			while(r.next())
+			{
+				Student s = new Student();
+				s.setId(r.getInt(1));
+				s.setName(r.getString(2));
+				s.setEmail(r.getString(3));
+				s.setStd(r.getString(4));
+				s.setSec(r.getString(5));
+				s.setOverAllPercentage(r.getString(6));
+				s.setGender(r.getString(7));
+				s.setParentContact(r.getString(8));		
+				s.setRemarks(r.getString(9));
+				s.setAddress(r.getString(10));
+				s.setPassword(r.getString(11));
+				l.add(s);
+			}
+			return l;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public Student updateStudent(Student student) {
+		Connection con = getConnection();
+		String sql="update student set name=?,email=?,std=?,sec=?,overAllPercentage=?,gender=?,parentContact=?,remarks=?,address=?,password=? where id=?";
+		try {
+			PreparedStatement p = con.prepareStatement(sql);
+			 
+			p.setString(1, student.getName());
+			p.setString(2, student.getEmail());
+			p.setString(3, student.getStd());
+			p.setString(4, student.getSec());
+			p.setString(5, student.getOverAllPercentage());
+			p.setString(6, student.getGender());
+			p.setString(7, student.getParentContact());
+			p.setString(8, student.getRemarks());
+			p.setString(9, student.getAddress());
+			p.setString(10, student.getPassword());
+			p.setInt(11, student.getId());
+			int r = p.executeUpdate();
+			if (r == 0) {
+	            throw new SQLException("Update failed, no rows affected.");
+	        }
+	
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return student;
+}
+}

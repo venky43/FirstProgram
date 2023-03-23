@@ -1,0 +1,9 @@
+127.0.0.1 - - [06/Mar/2023:18:10:42 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:18:10:44 +0530] "GET /servletFirst/getDataById.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:18:10:44 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:18:10:54 +0530] "GET /servletFirst/getDataById?id=1 HTTP/1.1" 200 52
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:18:12:54 +0530] "GET /servletFirst/servlet/ControllerData.getDataById HTTP/1.1" 404 806
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:19:15:39 +0530] "GET /servletFirst/Homepage.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:19:15:39 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:19:15:47 +0530] "GET /servletFirst/users.html HTTP/1.1" 200 258
+0:0:0:0:0:0:0:1 - - [06/Mar/2023:19:16:19 +0530] "GET /servletFirst/save?name=Hemanth&email=nallipak%40gmail.com HTTP/1.1" 200 26

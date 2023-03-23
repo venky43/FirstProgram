@@ -1,0 +1,6 @@
+127.0.0.1 - - [02/Mar/2023:18:01:36 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [02/Mar/2023:18:01:38 +0530] "GET /servletFirst/Homepage.html HTTP/1.1" 200 244
+0:0:0:0:0:0:0:1 - - [02/Mar/2023:18:01:38 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [02/Mar/2023:18:01:42 +0530] "GET /servletFirst/users.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Mar/2023:18:01:47 +0530] "GET /servletFirst/getDataById.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Mar/2023:18:01:57 +0530] "GET /servletFirst/getDataById?id=1 HTTP/1.1" 200 52

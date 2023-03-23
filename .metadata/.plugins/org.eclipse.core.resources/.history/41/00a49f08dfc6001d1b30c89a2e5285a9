@@ -1,0 +1,31 @@
+package college;
+
+import java.sql.Connection;
+import java.util.List;
+
+public interface TeacherRepositry {
+
+	Connection getconnection();
+	
+	
+	Teacher TeacherLogin(String email,String password);
+	String saveTeacher(Teacher Teacher);
+	
+	String saveTeacherById(Teacher Teacher);
+	
+	Teacher getTeacherById(int id);
+	
+	Teacher deleteTeacher(int id);
+	
+	Teacher updateTeacher(int id);
+	
+	List<Teacher> getTeacherBySubject(String subject);
+	
+	List<Teacher> getClassTeacher(String std);
+	List<Teacher> getTeacherBySal(int sal);
+	List<Teacher> getAllTeacher();
+	
+	
+	
+	
+}

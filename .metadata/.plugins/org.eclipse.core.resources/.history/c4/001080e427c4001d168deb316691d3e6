@@ -1,0 +1,26 @@
+package college;
+
+import java.util.List;
+
+public interface TeacherRepositry {
+
+	Teacher TeacherLogin(String email,String password);
+	
+	String saveTeacherById(Teacher Teacher);
+	
+	Teacher getTeacherById(int id);
+	
+	Teacher deleteTeacher(int id);
+	
+	Teacher updateTeacher(int id);
+	
+	List<Teacher> getTeacherBySubject(String subject);
+	
+	List<Teacher> getClassTeacher(String std);
+	List<Teacher> getTeacherBySal(int sal);
+	List<Teacher> getAllTeacher();
+	
+	
+	
+	
+}

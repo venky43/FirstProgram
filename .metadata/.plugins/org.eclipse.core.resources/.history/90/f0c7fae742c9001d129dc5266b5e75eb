@@ -1,0 +1,28 @@
+package college;
+
+public class TestSaveTeacher {
+	public static void main(String[] args) {
+		 Teacher Teacher =new Teacher();
+		 Teacher.setId(2);
+		 Teacher.setName("vamsi");
+		 Teacher.setEmail("@vamsi");
+		 Teacher.setContact("8");
+		 Teacher.setSubject("maths");
+		 Teacher.setClassTeacher("98.90");
+		 Teacher.setSal(30000);
+		 Teacher.setAddress("8179560579");	 
+		 Teacher.setPassword("good");
+		 
+		 TeacherRepositryimp rd = new TeacherRepositryimp();
+		 System.out.println(rd.saveTeacher(Teacher));
+		 
+		 TeacherRepositry res= new TeacherRepositryimp();
+		 Teacher t = res.TeacherLogin("@vamsi","good");
+		 if(Teacher != null) {
+			 System.out.println(t.getName());
+		 }else 
+			 System.out.println("Invalid user or password");
+		 
+	}
+		 
+}
